@@ -3,6 +3,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+var api = require("/app/routing/apiRoutes.js");
+
 
 //set up express app
 //==========================================================================
