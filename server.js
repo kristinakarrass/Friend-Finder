@@ -4,7 +4,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 var api = require("/app/routing/apiRoutes.js");
-
+require("/app/routing/htmlRoutes.js")(app);
+require("/app/routing/apiRoutes.js")(app);
 
 //set up express app
 //==========================================================================
