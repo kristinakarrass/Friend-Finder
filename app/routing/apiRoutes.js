@@ -1,14 +1,17 @@
+//link route to data source for friends array
+var friendsArray = require("../data/friends.js");
+
 module.exports = function(app) {
-	//api route to get friends information
-    api.get("/api/friends", function(req, res) {
-        return res.json(friends);
+	//api route handles when user visits page
+    app.get("/api/friends", function(req, res) {
+        res.json(friends);
     });
-    //api route to post new friend information to file
+    //api route handles submitted form by user by pushing it to Friends Array
     app.post("/api/friends", function(req, res) {
         var newFriend = req.body;
-        newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
+        // newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
         console.log(newFriend);
         friends.push(newFriend);
-        res.json(newFriend);
+        // res.json(newFriend);
     });
 }

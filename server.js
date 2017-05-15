@@ -3,9 +3,11 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-var api = require("/app/routing/apiRoutes.js");
-require("/app/routing/htmlRoutes.js")(app);
-require("/app/routing/apiRoutes.js")(app);
+// var api = require("/app/routing/apiRoutes.js");
+
+require("./app/routing/apiRoutes.js")(app);
+require("./app/routing/htmlRoutes.js")(app);
+
 
 //set up express app
 //==========================================================================
@@ -18,4 +20,9 @@ app.use(bodyParser.urlendcoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+//server listening
 //==========================================================================
+
+app.listen(PORT, function() {
+	console.log("App listening on PORT " + PORT);
+});
