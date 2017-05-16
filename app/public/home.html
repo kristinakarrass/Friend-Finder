@@ -22,37 +22,17 @@
       <h2 class>Then find the friend with the greatest compatibility!</h2>
       <br>
       <div><a href="/survey"><button type="button" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Go to Survey</button></a></div>
-
     </div>
-  <div class="container">
+
+  <footer>
   <p>
-  <a href="#">API Friends List</a>
+  <a href="/api/friends" target="_blank">API Friends List</a>
     |  
-  <a href="#">GitHub Repo</a>
+  <a href="https://github.com/kristinakarrass/Friend-Finder" target="_blank">GitHub Repo</a>
   </p>
-  </div>
+  </footer>
 
-  </div> 
-
-  <script type="text/javascript">
-    // Question: What does this code do?
-    $("#add-btn").on("click", function(event) {
-      event.preventDefault();
-      var newCharacter = {
-        name: $("#name").val().trim(),
-        role: $("#role").val().trim(),
-        age: $("#age").val().trim(),
-        forcePoints: $("#force-points").val().trim()
-      };
-
-      // Question: What does this code do??
-      $.post("/api/new", newCharacter)
-      .done(function(data) {
-        console.log(data);
-        alert("Adding character...");
-      });
-    });
-  </script>
+  </div> <!-- close container -->
 
 </body>
 </html>
