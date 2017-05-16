@@ -127,9 +127,9 @@
         };
         console.log(newFriend);
 
-        // $.post("/api/friends", newFriend).done(function(data) {
-        //     console.log(data);
-        // });
+        $.post("/api/friends", newFriend).done(function(data) {
+            console.log(data);
+        });
     });
     </script>
     <!-- <script type="text/javascript" src="../data/survey.js"></script> -->
