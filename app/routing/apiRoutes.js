@@ -10,22 +10,42 @@ module.exports = function(app) {
     //api route handles submitted form by user by pushing it to Friends Array
     app.post("/api/new", function(req, res) {
         var newFriend = req.body;
-        res.json(newFriend);
+        // res.json(newFriend);
 // //add matching logic here and send info to modal on survey.html page
-// 	var matchFactor = 0;
-// 	var matchArray = [];
-// 	var userAnswers = newFriend.answers;
-// 	for (var i = 0; i < friendsArray; i++) {
-// 		var friendsAnswers = friendsArray[j].answers;
-// 		for (var j = 0; j < friendsAnswers.length; j++){
-// 			matchFactor += Math.abs(parseInt(friendsAnswers[j]) - parseInt(userAnsers[j]));
-// 		}
-// 		matchArray.push(matchFactor);
-
-// 	} console.log(matchArray);
-
-
+	var matchArray = [];
+	var userAnswers = newFriend.answers;
+	//compare friendsArray to user data to find best match/matches
+	for (var i = 0; i < friendsArray.length; i++) {
+		var matchFactor = 0;
+		var friendsAnswers = friendsArray[i].answers;
+		for (var j = 0; j < friendsAnswers.length; j++){
+			matchFactor += Math.abs(parseInt(friendsAnswers[j]) - parseInt(userAnswers[j]));
+	}
+	//push match factors into array
+	matchArray.push(matchFactor);
+	}
+	console.log(matchArray);
+	//find lowest difference value
+	var lowDiff = Math.min(...matchArray);
+	console.log(lowDiff);
+	//array to hold low matches
+	var lowMatch = [];
+	//find matching lowest difference in array
+	for (var i = 0; i < matchArray.length; i++){
+		if (lowDiff === matchArray[i]){
+			lowMatch.push(i);
+		}
+	}
+	console.log(lowMatch);
+	var bestMatch = [];
+	//push all matches into array
+	for (var i = 0; i < lowMatch.length; i++) {
+		var person = friendsArray[lowMatch[i]];
+		// console.log(person);
+		bestMatch.push(person);
+	}
+	console.log(bestMatch);
         // friends.push(newFriend);
-        // res.json(matchArray);
+        res.json(bestMatch);
     });
 }

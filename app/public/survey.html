@@ -40,28 +40,25 @@
             </p>
         </footer>
     </div>
-
     <!-- Modal to display best match for user-->
-<div id="matchModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Your best match is: </h2>
-      </div>
-      <div class="modal-body">
-        <h2 id="matchName"></h2>
-        <img id="matchPhoto" src="" alt="">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+    <div id="matchModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">Your best match is: </h2>
+                </div>
+                <div class="modal-body">
+                    <h2 id="matchName"></h2>
+                    <img id="matchPhoto" src="" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
-
-  </div>
-</div>
     <script>
     var questions = [
         "You are always in a good mood.",
@@ -99,8 +96,8 @@
     }
 
     $("#submit").on("click", function() {
-         var answers = [];
-         //check that user provided name and photo url
+        var answers = [];
+        //check that user provided name and photo url
         if (!$("#name").val() || !$("#photo").val()) {
             alert("Please enter your name and photo url!");
         }
@@ -128,8 +125,13 @@
         console.log(newFriend);
 
         $.post("/api/new", newFriend).done(function(data) {
-        
             console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                $("#matchName").text(data[i].name);
+                $("#matchPhoto").attr("src", data[i].photo);
+                $('#matchModal').modal('show');
+
+            }
         });
     });
     </script>
