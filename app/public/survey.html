@@ -124,18 +124,23 @@
             answers: answers
         };
         console.log(newFriend);
-
-        $.post("/api/new", newFriend).done(function(data) {
+        //make url variable that will work when app is usd from different location
+        var currentURL = window.location.origin;
+        $.post(currentURL + "/api/new", newFriend).done(function(data) {
             console.log(data);
             $("#modal-body").empty();
             for (var i = 0; i < data.length; i++) {
-                var matchName = ("<h2>");
-                matchName.text(data[i].name);
-                $("#modal-body").append(matchName);
-                var matchPhoto = ("<img>");
-                matchPhoto.addClass("matchPhoto");
-                matchPhoto.attr("src", data[i].photo);
-                $("#moday-body").append(matchPhoto);
+                // var matchName = ("<h2>");
+                // matchName.html(data[i].name);
+                $(".modal-body").append("<h2>Name: " + data[i].name + "</h2>");
+                $(".modal-body").append("<img class='text-center' src='" + data[i].photo + "'>");
+                console.log(data[i].name);
+                console.log(data[i].photo);
+                // $("#modal-body").append(matchName);
+                // var matchPhoto = ("<img>");
+                // matchPhoto.addClass("matchPhoto");
+                // matchPhoto.attr("src", data[i].photo);
+                // $("#moday-body").append(matchPhoto);
                 // $("#matchName").text(data[i].name);
                 // $("#matchPhoto").attr("src", data[i].photo);
                 }
