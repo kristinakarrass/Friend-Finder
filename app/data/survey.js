@@ -78,5 +78,11 @@ $("#submit").on("click", function() {
         }
         //make modal visible
         $('#matchModal').modal('toggle');
+        //clear all input fields
+        $("#name").val("");
+        $("#photo").val("");
+        for (var i = 1; i <= 10; i++) {
+            $("#answer" + i).val("");
+        }
     });
 });
