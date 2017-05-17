@@ -16,7 +16,7 @@ app.use(bodyParser.json({type: "application/vnd.api+json"}));
 //==============================================================
 //routes for api and html
 // app.use(express.static(path.join(__dirname, 'data')));
-require("./app/routing/apiRoute.js")(app)
+require("./app/routing/apiRoutes.js")(app)
 require("./app/routing/htmlRoutes.js")(app)
 
 //server listening

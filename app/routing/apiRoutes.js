@@ -10,22 +10,22 @@ module.exports = function(app) {
     //api route handles submitted form by user by pushing it to Friends Array
     app.post("/api/new", function(req, res) {
         var newFriend = req.body;
-        console.log(newFriend);
-//add matching logic here and send info to modal on survey.html page
-	var matchFactor = 0;
-	var matchArray = [];
-	var userAnswers = newFriend.answers;
-	for (var i = 0; i < friendsArray; i++) {
-		var friendsAnswers = friendsArray[j].answers;
-		for (var j = 0; j < friendsAnswers.length; j++){
-			matchFactor += Math.abs(parseInt(friendsAnswers[j]) - parseInt(userAnsers[j]));
-		}
-		matchArray.push(matchFactor);
+        res.json(newFriend);
+// //add matching logic here and send info to modal on survey.html page
+// 	var matchFactor = 0;
+// 	var matchArray = [];
+// 	var userAnswers = newFriend.answers;
+// 	for (var i = 0; i < friendsArray; i++) {
+// 		var friendsAnswers = friendsArray[j].answers;
+// 		for (var j = 0; j < friendsAnswers.length; j++){
+// 			matchFactor += Math.abs(parseInt(friendsAnswers[j]) - parseInt(userAnsers[j]));
+// 		}
+// 		matchArray.push(matchFactor);
 
-	} console.log(matchArray);
+// 	} console.log(matchArray);
 
 
         // friends.push(newFriend);
-        // res.json(match);
+        // res.json(matchArray);
     });
 }
