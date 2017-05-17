@@ -50,8 +50,8 @@
                     <h2 class="modal-title">Your best match is: </h2>
                 </div>
                 <div class="modal-body">
-                    <h2 id="matchName"></h2>
-                    <img id="matchPhoto" src="" alt="">
+           <!--          <h2 id="matchName"></h2>
+                    <img id="matchPhoto" src="" alt=""> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -127,13 +127,20 @@
 
         $.post("/api/new", newFriend).done(function(data) {
             console.log(data);
+            $("#modal-body").empty();
             for (var i = 0; i < data.length; i++) {
-                $("#matchName").text(data[i].name);
-                $("#matchPhoto").attr("src", data[i].photo);
-                $('#matchModal').modal('show');
+                var matchName = ("<h2>");
+                matchName.text(data[i].name);
+                $("#modal-body").append(matchName);
+                var matchPhoto = ("<img>");
+                matchPhoto.addClass("matchPhoto");
+                matchPhoto.attr("src", data[i].photo);
+                $("#moday-body").append(matchPhoto);
+                // $("#matchName").text(data[i].name);
+                // $("#matchPhoto").attr("src", data[i].photo);
+                }
 
-            }
-        });
+           $('#matchModal').modal('toggle');         });
     });
     </script>
     <!-- <script type="text/javascript" src="../data/survey.js"></script> -->

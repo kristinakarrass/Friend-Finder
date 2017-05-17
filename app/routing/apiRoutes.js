@@ -3,15 +3,14 @@ var friendsArray = require("../data/friends.js");
 
 //Routing
 module.exports = function(app) {
-	//api route handles when user visits page
+	//api route handles when user visits friends page (displays content of friendsArray)
     app.get("/api/friends", function(req, res) {
         res.json(friendsArray);
     });
     //api route handles submitted form by user by pushing it to Friends Array
     app.post("/api/new", function(req, res) {
         var newFriend = req.body;
-        // res.json(newFriend);
-// //add matching logic here and send info to modal on survey.html page
+    //add matching logic here and send info to modal on survey.html page
 	var matchArray = [];
 	var userAnswers = newFriend.answers;
 	//compare friendsArray to user data to find best match/matches
@@ -37,15 +36,17 @@ module.exports = function(app) {
 		}
 	}
 	console.log(lowMatch);
+	//create array to hold best matches
 	var bestMatch = [];
 	//push all matches into array
 	for (var i = 0; i < lowMatch.length; i++) {
 		var person = friendsArray[lowMatch[i]];
-		// console.log(person);
 		bestMatch.push(person);
 	}
+
+	//when all logic is done, push new Friend into friendsArray
+	friendsArray.push(newFriend);
 	console.log(bestMatch);
-        // friends.push(newFriend);
         res.json(bestMatch);
     });
 }
