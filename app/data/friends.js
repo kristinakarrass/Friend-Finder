@@ -1,7 +1,7 @@
 var friendsArray = [
 {
 	name: "John",
-	photo: "https://mgtvwsls.files.wordpress.com/2015/12/john-lennon.jpg",
+	photo: "http://www.theblaze.com/wp-content/uploads/2011/06/lennonnyclg.jpg",
 	answers: [ 1,
                2,
                4,

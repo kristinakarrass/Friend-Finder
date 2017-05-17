@@ -61,13 +61,13 @@
     </div>
     <script>
     var questions = [
-        "You are always in a good mood.",
-        "You have very few but good friends.",
+        "You are a fan of the 70s.",
+        "You constantly have a tune in your head.",
         "You give more importance to character than status.",
         "You respect other people's opinions, regardless of whether they are based in facts.",
-        "You like animals better than people.",
+        "You walk to the beat of your own drum.",
         "You call your mother every day.",
-        "Your favorite season is winter.",
+        "Your favorite season is summer.",
         "People can always rely on you.",
         "You prefer being around people to spending time alone.",
         "You like to hear yourself speak."
@@ -132,8 +132,8 @@
             for (var i = 0; i < data.length; i++) {
                 // var matchName = ("<h2>");
                 // matchName.html(data[i].name);
-                $(".modal-body").append("<h2>Name: " + data[i].name + "</h2>");
-                $(".modal-body").append("<img class='text-center' src='" + data[i].photo + "'>");
+                $(".modal-body").append("<h2 class='text-center'>Name: " + data[i].name + "</h2>");
+                $(".modal-body").append("<img src='" + data[i].photo + "'>");
                 console.log(data[i].name);
                 console.log(data[i].photo);
                 // $("#modal-body").append(matchName);
