@@ -50,7 +50,7 @@
                     <h2 class="modal-title">Your best match is: </h2>
                 </div>
                 <div class="modal-body">
-           <!--          <h2 id="matchName"></h2>
+                    <!--          <h2 id="matchName"></h2>
                     <img id="matchPhoto" src="" alt=""> -->
                 </div>
                 <div class="modal-footer">
@@ -60,6 +60,7 @@
         </div>
     </div>
     <script>
+    //create array of questions
     var questions = [
         "You are a fan of the 70s.",
         "You constantly have a tune in your head.",
@@ -80,7 +81,7 @@
 
     function createSurvey() {
 
-        //create 10 questions and select fields
+        //create 10 questions and responding select fields
         for (var i = 1; i <= questions.length; i++) {
             var question = $("<div id='question" + i + "'>");
             var title = $("<h2><strong>").html("Question " + i);
@@ -104,9 +105,11 @@
         }
         //check that user entered answers in all fields
         for (var j = 1; j <= 10; j++) {
+            //alert user he has to update fields
             if (!$("#answer" + j + " option:selected").text()) {
                 alert("Please choose an answer for question " + j);
             } else {
+                //grab only number from answer
                 var ans = $("#answer" + j + " option:selected").text();
                 if (ans === "1 (Strongly Disagree)") {
                     ans = 1;
@@ -114,6 +117,7 @@
                 if (ans === "5 (Strongly Agree)") {
                     ans = 5;
                 }
+                //push answer into array
                 answers.push(parseInt(ans));
             }
         }
@@ -123,29 +127,19 @@
             photo: $("#photo").val().trim(),
             answers: answers
         };
-        console.log(newFriend);
-        //make url variable that will work when app is usd from different location
+        //make url variable that will work when app is used from different location
         var currentURL = window.location.origin;
         $.post(currentURL + "/api/new", newFriend).done(function(data) {
             console.log(data);
             $("#modal-body").empty();
             for (var i = 0; i < data.length; i++) {
-                // var matchName = ("<h2>");
-                // matchName.html(data[i].name);
+                //append each match's information to modal
                 $(".modal-body").append("<h2 class='text-center'>Name: " + data[i].name + "</h2>");
                 $(".modal-body").append("<img src='" + data[i].photo + "'>");
-                console.log(data[i].name);
-                console.log(data[i].photo);
-                // $("#modal-body").append(matchName);
-                // var matchPhoto = ("<img>");
-                // matchPhoto.addClass("matchPhoto");
-                // matchPhoto.attr("src", data[i].photo);
-                // $("#moday-body").append(matchPhoto);
-                // $("#matchName").text(data[i].name);
-                // $("#matchPhoto").attr("src", data[i].photo);
-                }
-
-           $('#matchModal').modal('toggle');         });
+            }
+            //make modal visible
+            $('#matchModal').modal('toggle');
+        });
     });
     </script>
     <!-- <script type="text/javascript" src="../data/survey.js"></script> -->
