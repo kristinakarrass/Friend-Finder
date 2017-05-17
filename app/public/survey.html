@@ -96,6 +96,7 @@
     }
 
     $("#submit").on("click", function() {
+        event.preventDefault();
         var answers = [];
         //check that user provided name and photo url
         if (!$("#name").val() || !$("#photo").val()) {
