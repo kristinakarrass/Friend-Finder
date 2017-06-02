@@ -14,6 +14,6 @@ Answer 10 questions and click submit. Make sure you enter your name and a link t
 
 ## Your Best Match!
 
-After submitting your survey, you will find out who your best match is. Are you a Beatle or a Rolling Stone?
+After submitting your survey, you will find out who your best match is. Are you a Beatle or a Rolling Stone -- or both???
 
 ![Match](/screenshots/match.png?raw=true "match")
